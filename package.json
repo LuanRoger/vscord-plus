@@ -722,6 +722,22 @@
                 }
             },
             {
+                "title": "REST",
+                "type": "object",
+                "properties": {
+                    "vscord.rest.api.enabled": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Enable the REST API"
+                    },
+                    "vscord.rest.api.url": {
+                        "type": "string",
+                        "default": "https://api.example.com",
+                        "description": "The URL of the compatible REST API"
+                    }
+                }
+            },
+            {
                 "title": "Advanced",
                 "type": "object",
                 "properties": {
@@ -1030,5 +1046,5 @@
             "description": "Cannot access local Discord RPC when running in virtual workspace"
         }
     },
-    "packageManager": "8.15.4"
+    "packageManager": "npm@11.2.0"
 }

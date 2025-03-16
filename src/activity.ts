@@ -192,7 +192,7 @@ export const activity = async (
                 : undefined) ?? workspaceExcludedText;
     } else {
         const text = await replaceAllText(ignoreWorkspacesText);
-        workspaceExcludedText = text !== "" ? text : undefined ?? workspaceExcludedText;
+        workspaceExcludedText = text !== "" ? text : workspaceExcludedText;
     }
 
     let details = isWorkspaceExcluded ? workspaceExcludedText : undefined;

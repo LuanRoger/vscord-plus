@@ -204,5 +204,9 @@ export const CONFIG_KEYS = {
         PrioritizeLanguagesOverExtensions: "behaviour.prioritizeLanguagesOverExtensions" as const,
         StatusBarAlignment: "behaviour.statusBarAlignment" as const,
         Debug: "behaviour.debug" as const
+    } as const,
+    REST: {
+        Enabled: "rest.api.enabled" as const,
+        URL: "rest.api.url" as const
     } as const
 } as const;

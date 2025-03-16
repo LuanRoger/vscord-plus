@@ -6,15 +6,7 @@ import { logError, logInfo } from "./logger";
 import { CONFIG_KEYS } from "./constants";
 import { getConfig } from "./config";
 import { dataClass } from "./data";
-import {
-    type Disposable,
-    type WindowState,
-    debug,
-    languages,
-    window,
-    workspace,
-    commands
-} from "vscode";
+import { type Disposable, type WindowState, debug, languages, window, workspace, commands } from "vscode";
 import { editor } from "./editor";
 
 export class RPCController {
@@ -155,24 +147,21 @@ export class RPCController {
                 clearTimeout(this.idleTimeout);
                 await this.sendActivity();
             } else if (config.get(CONFIG_KEYS.Status.Idle.Check)) {
-                this.idleTimeout = setTimeout(
-                    async () => {
-                        if (!config.get(CONFIG_KEYS.Status.Idle.Check)) return;
+                this.idleTimeout = setTimeout(async () => {
+                    if (!config.get(CONFIG_KEYS.Status.Idle.Check)) return;
 
-                        if (
-                            config.get(CONFIG_KEYS.Status.Idle.DisconnectOnIdle) &&
-                            config.get(CONFIG_KEYS.Status.Idle.ResetElapsedTime)
-                        ) {
-                            delete this.state.startTimestamp;
-                        }
+                    if (
+                        config.get(CONFIG_KEYS.Status.Idle.DisconnectOnIdle) &&
+                        config.get(CONFIG_KEYS.Status.Idle.ResetElapsedTime)
+                    ) {
+                        delete this.state.startTimestamp;
+                    }
 
-                        if (!this.enabled) return;
+                    if (!this.enabled) return;
 
-                        this.activityThrottle.reset();
-                        await this.sendActivity(false, true);
-                    },
-                    config.get(CONFIG_KEYS.Status.Idle.Timeout)! * 1000
-                );
+                    this.activityThrottle.reset();
+                    await this.sendActivity(false, true);
+                }, config.get(CONFIG_KEYS.Status.Idle.Timeout)! * 1000);
             }
         }
     }
@@ -197,6 +186,8 @@ export class RPCController {
         this.checkCanSend(isIdling);
         this.state = await activity(this.state, isViewing, isIdling);
         this.state.instance = true;
+        logInfo("[004] Debug:", "Sending Activity", this.state);
+
         if (!this.state || Object.keys(this.state).length === 0 || !this.canSendActivity)
             return void this.client.user?.clearActivity(process.pid);
         return this.client.user?.setActivity(this.state, process.pid);
