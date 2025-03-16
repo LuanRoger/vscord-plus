@@ -51,6 +51,7 @@
         "@types/vscode": "1.57.0",
         "@vscode/vsce": "^2.24.0",
         "@xhayper/discord-rpc": "^1.1.2",
+        "ky": "^1.7.5",
         "discord-api-types": "^0.37.79",
         "filesize": "^10.1.1",
         "git-url-parse": "^14.0.0",

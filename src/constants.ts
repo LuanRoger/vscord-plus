@@ -210,3 +210,7 @@ export const CONFIG_KEYS = {
         URL: "rest.api.url" as const
     } as const
 } as const;
+
+export const REST_ENDPOINTS_KEYS = {
+    activity: "activity" as const
+};
