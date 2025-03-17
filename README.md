@@ -12,8 +12,8 @@ This is a fork of [leonardssh/vscord](https://github.com/leonardssh/vscord) with
 
 ## New Features
 
--   REST API support, send activity updates to custom compatible clients
--   Support for a few more languages
+- REST API support, send activity updates to custom compatible clients
+- Support for a few more languages
 
 ## Disclaimer
 
@@ -21,17 +21,17 @@ This extension does not work with snapstore / flatpak version of VSCode, please 
 
 ## 📌 Features
 
--   Shows what you're working on!
--   Switch between 3 IDE names (`Code`, `Visual Studio Code` and `VSCodium`) or a custom one if you wish!
--   Packed with 60+ extension settings!
--   Tons of variable to use!
--   Support for over 130+ of the most popular languages!
--   Support custom images (using HTTP link)
--   Support custom button link!
--   Support flatpak / snapstore version of Discord!
--   Detect when you are Debugging!
--   Detect when you are using the [Insiders build](https://code.visualstudio.com/insiders/)!
--   Detect when you are Idling!
+- Shows what you're working on!
+- Switch between 3 IDE names (`Code`, `Visual Studio Code` and `VSCodium`) or a custom one if you wish!
+- Packed with 60+ extension settings!
+- Tons of variable to use!
+- Support for over 130+ of the most popular languages!
+- Support custom images (using HTTP link)
+- Support custom button link!
+- Support flatpak / snapstore version of Discord!
+- Detect when you are Debugging!
+- Detect when you are using the [Insiders build](https://code.visualstudio.com/insiders/)!
+- Detect when you are Idling!
 
 ## 👀 Preview
 
@@ -101,10 +101,10 @@ We have a guide for adding a new language [here](ADDING_LANGUAGE.md)!
 
 ## 🎉 Thanks
 
--   [discordjs](https://github.com/discordjs/) - Creator of Discord RPC Client
--   [iCrawl](https://github.com/iCrawl) - Creator of [discord-vscode](https://github.com/iCrawl/discord-vscode)
--   [Satoqz](https://github.com/Satoqz) - Creator of [vscode-discord](https://github.com/Satoqz/vscode-discord/)
--   [LeonardSSH](https://github.com/leonardssh/vscord) - Creator of the original VSCord
+- [discordjs](https://github.com/discordjs/) - Creator of Discord RPC Client
+- [iCrawl](https://github.com/iCrawl) - Creator of [discord-vscode](https://github.com/iCrawl/discord-vscode)
+- [Satoqz](https://github.com/Satoqz) - Creator of [vscode-discord](https://github.com/Satoqz/vscode-discord/)
+- [LeonardSSH](https://github.com/leonardssh/vscord) - Creator of the original VSCord
 
 _Much of the code in this repository is based on [iCrawl/discord-vscode](https://github.com/iCrawl/discord-vscode) & [Satoqz/vscode-discord](https://github.com/Satoqz/vscode-discord). This extension would not exist without them._
 
