@@ -11,8 +11,7 @@ import { editor } from "./editor";
 
 const controller = new RPCController(
     getApplicationId(getConfig()).clientId,
-    getConfig().get(CONFIG_KEYS.Behaviour.Debug),
-    getConfig().get(CONFIG_KEYS.REST.URL)
+    getConfig().get(CONFIG_KEYS.Behaviour.Debug)
 );
 
 export const registerListeners = (ctx: ExtensionContext) => {

@@ -1,10 +1,10 @@
 import { type SetActivity, type SetActivityResponse, Client } from "@xhayper/discord-rpc";
-import ky, { KyInstance } from "ky";
+import { RestClient } from "./rest";
 import { getApplicationId } from "./helpers/getApplicationId";
 import { activity, onDiagnosticsChange } from "./activity";
 import { throttle } from "./helpers/throttle";
 import { logError, logInfo } from "./logger";
-import { CONFIG_KEYS, REST_ENDPOINTS_KEYS } from "./constants";
+import { CONFIG_KEYS } from "./constants";
 import { getConfig } from "./config";
 import { dataClass } from "./data";
 import { type Disposable, type WindowState, debug, languages, window, workspace, commands } from "vscode";
@@ -17,7 +17,7 @@ export class RPCController {
     state: SetActivity = {};
     debug = false;
     client: Client;
-    restClient: KyInstance | undefined;
+    restClient: RestClient;
 
     private idleTimeout: NodeJS.Timeout | undefined;
     private iconTimeout: NodeJS.Timeout | undefined;
@@ -27,14 +27,9 @@ export class RPCController {
         true
     );
 
-    constructor(clientId: string, debug = false, restUrl?: string) {
+    constructor(clientId: string, debug = false) {
         this.client = new Client({ clientId });
-        this.restClient =
-            restUrl !== undefined && restUrl.length !== 0
-                ? ky.create({
-                      prefixUrl: restUrl
-                  })
-                : undefined;
+        this.restClient = new RestClient();
         this.debug = debug;
 
         editor.statusBarItem.text = "$(pulse) Connecting to Discord Gateway...";
@@ -196,7 +191,7 @@ export class RPCController {
         this.state.instance = true;
         logInfo("[004] Debug:", "Sending Activity", this.state);
 
-        const restActivity = void this.restClient?.post(REST_ENDPOINTS_KEYS, { json: this.state });
+        const restActivity = this.restClient.send(this.state);
         const rpcActivity =
             !this.state || Object.keys(this.state).length === 0 || !this.canSendActivity
                 ? void this.client.user?.clearActivity(process.pid)
