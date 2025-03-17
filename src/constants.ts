@@ -205,9 +205,9 @@ export const CONFIG_KEYS = {
         StatusBarAlignment: "behaviour.statusBarAlignment" as const,
         Debug: "behaviour.debug" as const
     } as const,
-    REST: {
-        Enabled: "rest.api.enabled" as const,
-        URL: "rest.api.url" as const
+    Rest: {
+        Url: "rest.url" as const,
+        Key: "rest.key" as const
     } as const
 } as const;
 

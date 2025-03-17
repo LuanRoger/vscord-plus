@@ -726,15 +726,13 @@
                 "title": "REST",
                 "type": "object",
                 "properties": {
-                    "vscord.rest.api.enabled": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "Enable the REST API"
-                    },
-                    "vscord.rest.api.url": {
+                    "vscord.rest.url": {
                         "type": "string",
-                        "default": "https://api.example.com",
-                        "description": "The URL of the compatible REST API"
+                        "description": "The URL of the compatible REST API. If this is empty, the extension will not send any data to the API."
+                    },
+                    "vscord.rest.key": {
+                        "type": "string",
+                        "description": "The API key to use when sending data to the API."
                     }
                 }
             },

@@ -112,8 +112,8 @@ export interface ExtensionConfigurationType {
     "behaviour.prioritizeLanguagesOverExtensions": boolean;
     "behaviour.statusBarAlignment": "Left" | "Right";
     "behaviour.debug": boolean;
-    "rest.api.enabled": boolean;
-    "rest.api.url": string;
+    "rest.url": string;
+    "rest.key": string;
 }
 
 // Created by hayper1919, you may use it inside your extension
