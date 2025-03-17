@@ -1,32 +1,19 @@
 <div align="center">
 
-[<img width="256" alt="VSCord Logo" src="https://i.imgur.com/n7ieZfW.png" />][vsmp-link]
-
-<br />
-
-[![Visual Studio Marketplace Version][shield-vsmp-version]][vsmp-link]
-[![Visual Studio Marketplace Downloads][shield-vsmp-downloads]][vsmp-link]
-[![Visual Studio Marketplace Installs][shield-vsmp-installs]][vsmp-link]
-[![Visual Studio Marketplace Rating][shield-vsmp-rating]][vsmp-link]
-
-[![Open VSX Version][shield-ovsx-version]][ovsx-link]
-[![Open VSX Downloads][shield-ovsx-downloads]][ovsx-link]
-[![Open VSX Rating][shield-ovsx-rating]][ovsx-link]
-
-[![Continuous Integration][shield-workflows-ci]][github-workflows-ci]
-[![Gitter Support Chat][shield-gitter-support]][gitter-vscord-support]
-
-[![Continuous Delivery][shield-workflows-cd]][github-workflows-cd]
+<img width="256" alt="VSCord Logo" src="https://i.imgur.com/n7ieZfW.png" />
 
 </div>
 
-<br />
-
-# VSCord
+# VSCord +
 
 Highly customizable [Discord Rich Presence](https://discord.com/rich-presence) extension for [Visual Studio Code](https://code.visualstudio.com/)
 
-> Remember to 🌟 this GitHub if you 💖 it.
+This is a fork of [leonardssh/vscord](https://github.com/leonardssh/vscord) with some additional features and improvements.
+
+## New Features
+
+-   REST API support, send activity updates to custom compatible clients
+-   Support for a few more languages
 
 ## Disclaimer
 
@@ -54,17 +41,12 @@ This extension does not work with snapstore / flatpak version of VSCode, please 
 
 ## 📥 Installation
 
-Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.
+I don't distribute this extension on the Visual Studio Marketplace or Open VSX Marketplace, so you have to install it manually.
 
-```
-ext install LeonardSSH.vscord
-```
-
-**OR**
-
-Use the **[Extension Marketplace](https://code.visualstudio.com/docs/editor/extension-gallery)**
-
-![a4](https://i.imgur.com/qMzox38.gif)
+1. Clone the repository
+2. Run `npm install` to install the dependencies
+3. Run `npm run package` to create the `.vsix` file
+4. Install the `.vsix` file in Visual Studio Code
 
 ## ⚙️ Configuration
 
@@ -113,6 +95,8 @@ To contribute to this repository, feel free to create a new fork of the reposito
 
 ## 👨‍💻 Adding a new language
 
+I maybe will do it for myself, but if you want to add a new language, feel free to create a new fork of the repository and submit a pull request.
+
 We have a guide for adding a new language [here](ADDING_LANGUAGE.md)!
 
 ## 🎉 Thanks
@@ -120,31 +104,10 @@ We have a guide for adding a new language [here](ADDING_LANGUAGE.md)!
 -   [discordjs](https://github.com/discordjs/) - Creator of Discord RPC Client
 -   [iCrawl](https://github.com/iCrawl) - Creator of [discord-vscode](https://github.com/iCrawl/discord-vscode)
 -   [Satoqz](https://github.com/Satoqz) - Creator of [vscode-discord](https://github.com/Satoqz/vscode-discord/)
+-   [LeonardSSH](https://github.com/leonardssh/vscord) - Creator of the original VSCord
 
 _Much of the code in this repository is based on [iCrawl/discord-vscode](https://github.com/iCrawl/discord-vscode) & [Satoqz/vscode-discord](https://github.com/Satoqz/vscode-discord). This extension would not exist without them._
 
 ## 📋 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-
-[vsmp-link]:                https://marketplace.visualstudio.com/items?itemName=LeonardSSH.vscord
-[ovsx-link]:                https://open-vsx.org/extension/LeonardSSH/vscord
-
-[shield-vsmp-version]:      https://img.shields.io/visual-studio-marketplace/v/LeonardSSH.vscord?label=Visual%20Studio%20Marketplace
-[shield-vsmp-downloads]:    https://img.shields.io/visual-studio-marketplace/d/LeonardSSH.vscord
-[shield-vsmp-installs]:     https://img.shields.io/visual-studio-marketplace/i/LeonardSSH.vscord
-[shield-vsmp-rating]:       https://img.shields.io/visual-studio-marketplace/r/LeonardSSH.vscord
-
-[shield-ovsx-version]:      https://img.shields.io/open-vsx/v/LeonardSSH/vscord?label=OpenVSX%20Marketplace
-[shield-ovsx-downloads]:    https://img.shields.io/open-vsx/dt/LeonardSSH/vscord
-[shield-ovsx-rating]:       https://img.shields.io/open-vsx/rating/LeonardSSH/vscord
-
-[github-workflows-ci]:      https://github.com/leonardssh/vscord/actions/workflows/CI.yml
-[shield-workflows-ci]:      https://github.com/leonardssh/vscord/actions/workflows/CI.yml/badge.svg
-
-[github-workflows-cd]:      https://github.com/leonardssh/vscord/actions/workflows/CD.yml
-[shield-workflows-cd]:      https://github.com/leonardssh/vscord/actions/workflows/CD.yml/badge.svg
-
-[gitter-vscord-support]:    https://gitter.im/LeonardSSH/vscord-support?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-[shield-gitter-support]:    https://img.shields.io/badge/gitter-support%20chat-green?color=40aa8b
