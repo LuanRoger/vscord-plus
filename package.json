@@ -1,7 +1,7 @@
 {
     "name": "vscord-plus",
     "displayName": "Discord Rich Presence +",
-    "version": "6.0.0",
+    "version": "6.0.1",
     "description": "Highly customizable Discord Rich Presence extension for Visual Studio Code",
     "main": "dist/extension.js",
     "repository": "github:LuanRoger/vscord-plus",
@@ -128,6 +128,11 @@
                         "default": "782685898163617802",
                         "description": "Application id that will be used when `appName` is \"Custom\" or when `appName` is invalid",
                         "order": 3
+                    },
+                    "vscord-plus.app.enabled": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Enable or disable the extension"
                     },
                     "vscord-plus.app.privacyMode.enable": {
                         "type": "boolean",
@@ -385,7 +390,7 @@
                 "properties": {
                     "vscord-plus.status.image.large.idle.key": {
                         "type": "string",
-                        "default": "https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/idle-{app_id}.png",
+                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/idle-{app_id}.png",
                         "description": "The image url to use when idling"
                     },
                     "vscord-plus.status.image.large.idle.text": {
@@ -395,7 +400,7 @@
                     },
                     "vscord-plus.status.image.large.viewing.key": {
                         "type": "string",
-                        "default": "https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/{lang}.png",
+                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/{lang}.png",
                         "description": "The image url to use when viewing a file."
                     },
                     "vscord-plus.status.image.large.viewing.text": {
@@ -405,7 +410,7 @@
                     },
                     "vscord-plus.status.image.large.editing.key": {
                         "type": "string",
-                        "default": "https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/{lang}.png",
+                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/{lang}.png",
                         "description": "The image url to use when editing a file."
                     },
                     "vscord-plus.status.image.large.editing.text": {
@@ -415,7 +420,7 @@
                     },
                     "vscord-plus.status.image.large.debugging.key": {
                         "type": "string",
-                        "default": "https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/debugging.png",
+                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/debugging.png",
                         "description": "The image url to use when debugging."
                     },
                     "vscord-plus.status.image.large.debugging.text": {
@@ -425,7 +430,7 @@
                     },
                     "vscord-plus.status.image.large.notInFile.key": {
                         "type": "string",
-                        "default": "https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/idle-{app_id}.png",
+                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/idle-{app_id}.png",
                         "description": "The image url to use when you are not in a file."
                     },
                     "vscord-plus.status.image.large.notInFile.text": {
@@ -435,7 +440,7 @@
                     },
                     "vscord-plus.status.image.small.idle.key": {
                         "type": "string",
-                        "default": "https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/idle.png",
+                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/idle.png",
                         "description": "The image url to use when idling."
                     },
                     "vscord-plus.status.image.small.idle.text": {
@@ -445,7 +450,7 @@
                     },
                     "vscord-plus.status.image.small.viewing.key": {
                         "type": "string",
-                        "default": "https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/{app_id}.png",
+                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/{app_id}.png",
                         "description": "The image url to use when viewing a file."
                     },
                     "vscord-plus.status.image.small.viewing.text": {
@@ -455,7 +460,7 @@
                     },
                     "vscord-plus.status.image.small.editing.key": {
                         "type": "string",
-                        "default": "https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/{app_id}.png",
+                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/{app_id}.png",
                         "description": "The image url to use when editing a file."
                     },
                     "vscord-plus.status.image.small.editing.text": {
@@ -465,7 +470,7 @@
                     },
                     "vscord-plus.status.image.small.debugging.key": {
                         "type": "string",
-                        "default": "https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/debugging.png",
+                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/debugging.png",
                         "description": "The image url to use when debugging."
                     },
                     "vscord-plus.status.image.small.debugging.text": {
@@ -475,7 +480,7 @@
                     },
                     "vscord-plus.status.image.small.notInFile.key": {
                         "type": "string",
-                        "default": "https://raw.githubusercontent.com/LeonardSSH/vscord/main/assets/icons/idle.png",
+                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/idle.png",
                         "description": "The image url to use when you are not in a file."
                     },
                     "vscord-plus.status.image.small.notInFile.text": {
