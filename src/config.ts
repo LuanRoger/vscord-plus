@@ -5,6 +5,7 @@ import { type PROBLEM_LEVEL } from "./activity";
 export type FileSizeStandard = "iec" | "jedec";
 
 export interface ExtensionConfigurationType {
+    "app.enable": boolean;
     "app.id": string;
     "app.name": "Code" | "Visual Studio Code" | "VSCodium" | "Custom";
     "app.privacyMode.enable": boolean;
