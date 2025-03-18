@@ -18,7 +18,7 @@ export const registerListeners = (ctx: ExtensionContext) => {
     const onConfigurationChanged = workspace.onDidChangeConfiguration(async () => {
         const config = getConfig();
         const clientId = getApplicationId(config).clientId;
-        const isEnabled = config.get(CONFIG_KEYS.Enabled);
+        const isEnabled = config.get(CONFIG_KEYS.App.Enabled);
 
         controller.debug = config.get(CONFIG_KEYS.Behaviour.Debug) ?? false;
         editor.updateStatusBarFromConfig();
@@ -39,7 +39,7 @@ export const registerCommands = (ctx: ExtensionContext) => {
     const enable = async (update = true) => {
         if (update)
             try {
-                await config.update(CONFIG_KEYS.Enabled, true);
+                await config.update(CONFIG_KEYS.App.Enabled, true);
             } catch {}
 
         await controller.enable();
@@ -48,7 +48,7 @@ export const registerCommands = (ctx: ExtensionContext) => {
     const disable = async (update = true) => {
         if (update)
             try {
-                await config.update(CONFIG_KEYS.Enabled, false);
+                await config.update(CONFIG_KEYS.App.Enabled, false);
             } catch {}
 
         await controller.disable();
@@ -170,8 +170,11 @@ export async function activate(ctx: ExtensionContext) {
     logInfo("Discord Rich Presence for VS Code activated.");
     registerCommands(ctx);
     registerListeners(ctx);
+    const config = getConfig();
+    const isEnable = config.get(CONFIG_KEYS.App.Enabled)
 
-    if (!getConfig().get(CONFIG_KEYS.Enabled)) await controller.disable();
+    if (isEnable) await controller.enable();
+    else await controller.disable();
 }
 
 export async function deactivate() {
