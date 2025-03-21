@@ -38,12 +38,12 @@ K: Language ID
 V: Icon
 */
 const KNOWN_LANGUAGES: Record<string, string> = {
-    cpp: "cpp",
-    // Language with ID "cpp" is linked to image "cpp" in "assets" folder
-    astro: "astro",
-    // Language with ID "astro" is linked to image "astro" in "assets" folder
-    jsonc: "jsoncomments"
-    // Language with ID "jsonc" is linked to image "jsoncomments" in "assets" folder
+  cpp: "cpp",
+  // Language with ID "cpp" is linked to image "cpp" in "assets" folder
+  astro: "astro",
+  // Language with ID "astro" is linked to image "astro" in "assets" folder
+  jsonc: "jsoncomments",
+  // Language with ID "jsonc" is linked to image "jsoncomments" in "assets" folder
 };
 ```
 
@@ -59,12 +59,12 @@ K: RegEx to test at the end of string
 V: Icon
 */
 const KNOWN_EXTENSIONS: Record<string, string> = {
-    ".cpp": "cpp",
-    // File that end with ".cpp" is linked to image "cpp" in "assets" folder
-    ".cc": "cpp",
-    // File that end with ".cc" is linked to image "cpp" in "assets" folder
-    "/\\.c[+px]{2}$|\\.cc$/i": "cpp"
-    // File that end with this regex is linked to image "cpp" in "assets" folder
+  ".cpp": "cpp",
+  // File that end with ".cpp" is linked to image "cpp" in "assets" folder
+  ".cc": "cpp",
+  // File that end with ".cc" is linked to image "cpp" in "assets" folder
+  "/\\.c[+px]{2}$|\\.cc$/i": "cpp",
+  // File that end with this regex is linked to image "cpp" in "assets" folder
 };
 ```
 
@@ -92,9 +92,9 @@ How to create background color:
 
 Here are some examples:
 
-|![Rust](./assets/icons/rust.png) | ![Holy C](./assets/icons/holyc.png) | ![QML](./assets/icons/qml.png) | ![JSX](./assets/icons/jsx.png) | ![Yarn](./assets/icons/yarn.png) |
-| :---: | :---: | :---: | :---: | :---: |
-| Rust | Holy C | QML | JSX | Yarn |
+| ![Rust](./assets/icons/rust.png) | ![Holy C](./assets/icons/holyc.png) | ![QML](./assets/icons/qml.png) | ![JSX](./assets/icons/jsx.png) | ![Yarn](./assets/icons/yarn.png) |
+| :------------------------------: | :---------------------------------: | :----------------------------: | :----------------------------: | :------------------------------: |
+|               Rust               |               Holy C                |              QML               |              JSX               |               Yarn               |
 
 #### Logo
 

@@ -1,767 +1,767 @@
 {
-    "name": "vscord-plus",
-    "displayName": "Discord Rich Presence +",
-    "version": "6.1.0",
-    "description": "Highly customizable Discord Rich Presence extension for Visual Studio Code",
-    "main": "dist/extension.js",
-    "repository": "github:LuanRoger/vscord-plus",
-    "publisher": "LuanRoger",
-    "contributors": [
-        "xhayper <hayper1919@gmail.com>",
-        "LuanRoger <luan.roger.2003@gmail.com>"
+  "name": "vscord-plus",
+  "displayName": "Discord Rich Presence +",
+  "version": "6.1.0",
+  "description": "Highly customizable Discord Rich Presence extension for Visual Studio Code",
+  "main": "dist/extension.js",
+  "repository": "github:LuanRoger/vscord-plus",
+  "publisher": "LuanRoger",
+  "contributors": [
+    "xhayper <hayper1919@gmail.com>",
+    "LuanRoger <luan.roger.2003@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "icon": "assets/icon.png",
+  "bugs": {
+    "url": "https://github.com/LuanRoger/vscord-plus/issues"
+  },
+  "homepage": "https://github.com/LuanRoger/vscord-plus#readme",
+  "keywords": [
+    "discord",
+    "rich",
+    "presence",
+    "rich presence",
+    "rpc",
+    "rest"
+  ],
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
+  "galleryBanner": {
+    "color": "#5865F2",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "scripts": {
+    "vscode:prepublish": "tsup",
+    "package": "vsce package --no-yarn",
+    "watch": "tsup --watch",
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write"
+  },
+  "devDependencies": {
+    "@types/git-url-parse": "^9.0.3",
+    "@types/node": "^22.13.11",
+    "@types/vscode": "^1.98.0",
+    "@vscode/vsce": "^3.3.0",
+    "@xhayper/discord-rpc": "^1.1.2",
+    "discord-api-types": "^0.37.79",
+    "filesize": "^10.1.1",
+    "git-url-parse": "^16.0.1",
+    "ky": "^1.7.5",
+    "prettier": "^3.5.3",
+    "source-map-support": "^0.5.21",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.4"
+  },
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscord-plus.enable",
+        "title": "Enable Discord Presence",
+        "category": "VSCord"
+      },
+      {
+        "command": "vscord-plus.disable",
+        "title": "Disable Discord Presence",
+        "category": "VSCord"
+      },
+      {
+        "command": "vscord-plus.workspace.enable",
+        "title": "Enable Discord Presence in the current workspace",
+        "category": "VSCord"
+      },
+      {
+        "command": "vscord-plus.workspace.disable",
+        "title": "Disable Discord Presence in the current workspace",
+        "category": "VSCord"
+      },
+      {
+        "command": "vscord-plus.disconnect",
+        "title": "Disconnect from Discord Gateway",
+        "category": "VSCord"
+      },
+      {
+        "command": "vscord-plus.reconnect",
+        "title": "Reconnect to Discord Gateway",
+        "category": "VSCord"
+      },
+      {
+        "command": "vscord-plus.enablePrivacyMode",
+        "title": "Enable Privacy Mode",
+        "category": "VSCord"
+      },
+      {
+        "command": "vscord-plus.disablePrivacyMode",
+        "title": "Disable Privacy Mode",
+        "category": "VSCord"
+      }
     ],
-    "license": "MIT",
-    "private": true,
-    "icon": "assets/icon.png",
-    "bugs": {
-        "url": "https://github.com/LuanRoger/vscord-plus/issues"
-    },
-    "homepage": "https://github.com/LuanRoger/vscord-plus#readme",
-    "keywords": [
-        "discord",
-        "rich",
-        "presence",
-        "rich presence",
-        "rpc",
-        "rest"
-    ],
-    "categories": [
-        "Visualization",
-        "Other"
-    ],
-    "extensionKind": [
-        "ui",
-        "workspace"
-    ],
-    "galleryBanner": {
-        "color": "#5865F2",
-        "theme": "dark"
-    },
-    "activationEvents": [
-        "onStartupFinished"
-    ],
-    "scripts": {
-        "vscode:prepublish": "tsup",
-        "package": "vsce package --no-yarn",
-        "watch": "tsup --watch",
-        "format": "prettier . --check",
-        "format:fix": "prettier . --write"
-    },
-    "devDependencies": {
-        "@types/git-url-parse": "^9.0.3",
-        "@types/node": "^22.13.11",
-        "@types/vscode": "^1.98.0",
-        "@vscode/vsce": "^3.3.0",
-        "@xhayper/discord-rpc": "^1.1.2",
-        "discord-api-types": "^0.37.79",
-        "filesize": "^10.1.1",
-        "git-url-parse": "^16.0.1",
-        "ky": "^1.7.5",
-        "prettier": "^3.5.3",
-        "source-map-support": "^0.5.21",
-        "tsup": "^8.0.2",
-        "typescript": "^5.4.4"
-    },
-    "engines": {
-        "vscode": "^1.98.0"
-    },
-    "contributes": {
-        "commands": [
-            {
-                "command": "vscord-plus.enable",
-                "title": "Enable Discord Presence",
-                "category": "VSCord"
+    "configuration": [
+      {
+        "title": "VSCord +",
+        "properties": {
+          "vscord-plus.app.name": {
+            "type": "string",
+            "enum": [
+              "Code",
+              "Visual Studio Code",
+              "VSCodium",
+              "Custom"
+            ],
+            "default": "Code",
+            "description": "Choose the name you want the application to use.\nChoosing \"Custom\" will make it so it use the \"rpc.id\" as application id",
+            "order": 2
+          },
+          "vscord-plus.app.id": {
+            "type": "string",
+            "default": "782685898163617802",
+            "description": "Application id that will be used when `appName` is \"Custom\" or when `appName` is invalid",
+            "order": 3
+          },
+          "vscord-plus.app.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable or disable the extension"
+          },
+          "vscord-plus.app.privacyMode.enable": {
+            "type": "boolean",
+            "default": false,
+            "description": "Should we hide the github repository, the file name and the workspace name?",
+            "order": 4
+          },
+          "vscord-plus.app.whitelistEnabled": {
+            "type": "boolean",
+            "default": false,
+            "description": "Is the whitelist enabled?",
+            "order": 5
+          },
+          "vscord-plus.app.whitelistIsBlacklist": {
+            "type": "boolean",
+            "default": false,
+            "description": "Switches the whitelist to a blacklist.",
+            "order": 6
+          },
+          "vscord-plus.app.whitelist": {
+            "type": "array",
+            "default": [],
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
             },
-            {
-                "command": "vscord-plus.disable",
-                "title": "Disable Discord Presence",
-                "category": "VSCord"
-            },
-            {
-                "command": "vscord-plus.workspace.enable",
-                "title": "Enable Discord Presence in the current workspace",
-                "category": "VSCord"
-            },
-            {
-                "command": "vscord-plus.workspace.disable",
-                "title": "Disable Discord Presence in the current workspace",
-                "category": "VSCord"
-            },
-            {
-                "command": "vscord-plus.disconnect",
-                "title": "Disconnect from Discord Gateway",
-                "category": "VSCord"
-            },
-            {
-                "command": "vscord-plus.reconnect",
-                "title": "Reconnect to Discord Gateway",
-                "category": "VSCord"
-            },
-            {
-                "command": "vscord-plus.enablePrivacyMode",
-                "title": "Enable Privacy Mode",
-                "category": "VSCord"
-            },
-            {
-                "command": "vscord-plus.disablePrivacyMode",
-                "title": "Disable Privacy Mode",
-                "category": "VSCord"
-            }
-        ],
-        "configuration": [
-            {
-                "title": "VSCord +",
-                "properties": {
-                    "vscord-plus.app.name": {
-                        "type": "string",
-                        "enum": [
-                            "Code",
-                            "Visual Studio Code",
-                            "VSCodium",
-                            "Custom"
-                        ],
-                        "default": "Code",
-                        "description": "Choose the name you want the application to use.\nChoosing \"Custom\" will make it so it use the \"rpc.id\" as application id",
-                        "order": 2
-                    },
-                    "vscord-plus.app.id": {
-                        "type": "string",
-                        "default": "782685898163617802",
-                        "description": "Application id that will be used when `appName` is \"Custom\" or when `appName` is invalid",
-                        "order": 3
-                    },
-                    "vscord-plus.app.enabled": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Enable or disable the extension"
-                    },
-                    "vscord-plus.app.privacyMode.enable": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "Should we hide the github repository, the file name and the workspace name?",
-                        "order": 4
-                    },
-                    "vscord-plus.app.whitelistEnabled": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "Is the whitelist enabled?",
-                        "order": 5
-                    },
-                    "vscord-plus.app.whitelistIsBlacklist": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "Switches the whitelist to a blacklist.",
-                        "order": 6
-                    },
-                    "vscord-plus.app.whitelist": {
-                        "type": "array",
-                        "default": [],
-                        "uniqueItems": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "List of discord user ids that will be able to use the extension.",
-                        "order": 7
-                    }
-                }
-            },
-            {
-                "title": "Status",
-                "type": "object",
-                "properties": {
-                    "vscord-plus.status.showElapsedTime": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Should elapsed time be shown?"
-                    },
-                    "vscord-plus.status.resetElapsedTimePerFile": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "Should we reset the elapsed time after switching file?"
-                    },
-                    "vscord-plus.status.problems.enabled": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Should we count the problems?"
-                    },
-                    "vscord-plus.status.problems.text": {
-                        "type": "string",
-                        "default": "- {problems_count} problems found",
-                        "description": "This text will be shown when there is a problem."
-                    },
-                    "vscord-plus.status.problems.countedSeverities": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "items": {
-                            "type": "string",
-                            "enum": [
-                                "error",
-                                "warning",
-                                "info",
-                                "hint"
-                            ]
-                        },
-                        "default": [
-                            "error",
-                            "warning"
-                        ],
-                        "description": "List of problem level to count for `problems_count`."
-                    },
-                    "vscord-plus.status.idle.check": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Should we check when you are idling?",
-                        "order": 1
-                    },
-                    "vscord-plus.status.idle.enabled": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Should we enable the idle status? \nIf disabled, the extension will only show a plain card with VS Code logo when idling.",
-                        "order": 2
-                    },
-                    "vscord-plus.status.idle.disconnectOnIdle": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "Should going idle disconnect you from Discord gateway? \nIf enabled, VS Code activity card will disappear from Discord at all when idling.",
-                        "order": 3
-                    },
-                    "vscord-plus.status.idle.resetElapsedTime": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "Should going idle reset the elapsed time on the last active file? Only applies if \"Disconnect on Idle\" is enabled.",
-                        "order": 4
-                    },
-                    "vscord-plus.status.idle.timeout": {
-                        "type": "number",
-                        "default": 300,
-                        "description": "Time in seconds before the user is considered idle.",
-                        "order": 5
-                    }
-                }
-            },
-            {
-                "title": "Ignore",
-                "type": "object",
-                "properties": {
-                    "vscord-plus.ignore.workspaces": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "default": [],
-                        "description": "A list of workspace (name / path) to ignore."
-                    },
-                    "vscord-plus.ignore.workspacesText": {
-                        "type": [
-                            "string",
-                            "object"
-                        ],
-                        "description": "The text / object to show in the status when current workspace is ignored, when using the object, key is workspace name and value is the text."
-                    },
-                    "vscord-plus.ignore.repositories": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "default": [],
-                        "description": "A list of repository name to ignore."
-                    },
-                    "vscord-plus.ignore.organizations": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "default": [],
-                        "description": "A list of git organizations to ignore."
-                    },
-                    "vscord-plus.ignore.gitHosts": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "default": [],
-                        "description": "A list of git host to ignore."
-                    }
-                }
-            },
-            {
-                "title": "Details",
-                "type": "object",
-                "properties": {
-                    "vscord-plus.status.details.enabled": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Should details be shown?"
-                    },
-                    "vscord-plus.status.details.idle.enabled": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Should details be shown when idling?"
-                    },
-                    "vscord-plus.status.details.text.idle": {
-                        "type": "string",
-                        "default": "Idling",
-                        "description": "The text to show when idling."
-                    },
-                    "vscord-plus.status.details.text.editing": {
-                        "type": "string",
-                        "default": "In {workspace} {problems}",
-                        "description": "The text to show when editing a file."
-                    },
-                    "vscord-plus.status.details.text.debugging": {
-                        "type": "string",
-                        "default": "Debugging {file_name}{file_extension}",
-                        "description": "The text to show when debugging."
-                    },
-                    "vscord-plus.status.details.text.viewing": {
-                        "type": "string",
-                        "default": "In {workspace} {problems}",
-                        "description": "The text to show when viewing a file."
-                    },
-                    "vscord-plus.status.details.text.notInFile": {
-                        "type": "string",
-                        "default": "Not in a file!",
-                        "description": "The text to show when you are not in a file."
-                    },
-                    "vscord-plus.status.details.text.noWorkSpaceText": {
-                        "type": "string",
-                        "default": "no workspace",
-                        "description": "The text to show when you are not in a workspace and there is no workspace text."
-                    }
-                }
-            },
-            {
-                "title": "State",
-                "type": "object",
-                "properties": {
-                    "vscord-plus.status.state.enabled": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Should state be shown?"
-                    },
-                    "vscord-plus.status.state.debugging.enabled": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Should state be shown when debugging? If disabled, it will be shown when editing/viewing a file."
-                    },
-                    "vscord-plus.status.state.idle.enabled": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "Should state be shown when idling?"
-                    },
-                    "vscord-plus.status.state.text.idle": {
-                        "type": "string",
-                        "default": "",
-                        "description": "The text to show when idling."
-                    },
-                    "vscord-plus.status.state.text.editing": {
-                        "type": "string",
-                        "default": "Working on {file_name}{file_extension}:{current_line}:{current_column}",
-                        "description": "The text to show when editing a file."
-                    },
-                    "vscord-plus.status.state.text.debugging": {
-                        "type": "string",
-                        "default": "Debugging: {workspace}",
-                        "description": "The text to show when debugging."
-                    },
-                    "vscord-plus.status.state.text.viewing": {
-                        "type": "string",
-                        "default": "Viewing {file_name}{file_extension}",
-                        "description": "The text to show when viewing a file."
-                    },
-                    "vscord-plus.status.state.text.notInFile": {
-                        "type": "string",
-                        "default": "",
-                        "description": "The text to show when you are not in a file."
-                    },
-                    "vscord-plus.status.state.text.noWorkspaceFound": {
-                        "type": "string",
-                        "default": "No workspace.",
-                        "description": "The text to show when no workspace is found."
-                    }
-                }
-            },
-            {
-                "title": "Image",
-                "type": "object",
-                "properties": {
-                    "vscord-plus.status.image.large.idle.key": {
-                        "type": "string",
-                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/idle-{app_id}.png",
-                        "description": "The image url to use when idling"
-                    },
-                    "vscord-plus.status.image.large.idle.text": {
-                        "type": "string",
-                        "default": "Idling",
-                        "description": "The large text to show when idling."
-                    },
-                    "vscord-plus.status.image.large.viewing.key": {
-                        "type": "string",
-                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/{lang}.png",
-                        "description": "The image url to use when viewing a file."
-                    },
-                    "vscord-plus.status.image.large.viewing.text": {
-                        "type": "string",
-                        "default": "Viewing a {LANG} file",
-                        "description": "The large text to show when viewing a file."
-                    },
-                    "vscord-plus.status.image.large.editing.key": {
-                        "type": "string",
-                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/{lang}.png",
-                        "description": "The image url to use when editing a file."
-                    },
-                    "vscord-plus.status.image.large.editing.text": {
-                        "type": "string",
-                        "default": "Editing a {LANG} file",
-                        "description": "The large text to show when editing a file."
-                    },
-                    "vscord-plus.status.image.large.debugging.key": {
-                        "type": "string",
-                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/debugging.png",
-                        "description": "The image url to use when debugging."
-                    },
-                    "vscord-plus.status.image.large.debugging.text": {
-                        "type": "string",
-                        "default": "Debugging a {LANG} file",
-                        "description": "The large text to show when debugging"
-                    },
-                    "vscord-plus.status.image.large.notInFile.key": {
-                        "type": "string",
-                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/idle-{app_id}.png",
-                        "description": "The image url to use when you are not in a file."
-                    },
-                    "vscord-plus.status.image.large.notInFile.text": {
-                        "type": "string",
-                        "default": "",
-                        "description": "The large text to show when you are not in a file."
-                    },
-                    "vscord-plus.status.image.small.idle.key": {
-                        "type": "string",
-                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/idle.png",
-                        "description": "The image url to use when idling."
-                    },
-                    "vscord-plus.status.image.small.idle.text": {
-                        "type": "string",
-                        "default": "zZz",
-                        "description": "The small text to show when idling."
-                    },
-                    "vscord-plus.status.image.small.viewing.key": {
-                        "type": "string",
-                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/{app_id}.png",
-                        "description": "The image url to use when viewing a file."
-                    },
-                    "vscord-plus.status.image.small.viewing.text": {
-                        "type": "string",
-                        "default": "{app_name}",
-                        "description": "The small text to show when viewing a file."
-                    },
-                    "vscord-plus.status.image.small.editing.key": {
-                        "type": "string",
-                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/{app_id}.png",
-                        "description": "The image url to use when editing a file."
-                    },
-                    "vscord-plus.status.image.small.editing.text": {
-                        "type": "string",
-                        "default": "{app_name}",
-                        "description": "The small text to show when editing a file."
-                    },
-                    "vscord-plus.status.image.small.debugging.key": {
-                        "type": "string",
-                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/debugging.png",
-                        "description": "The image url to use when debugging."
-                    },
-                    "vscord-plus.status.image.small.debugging.text": {
-                        "type": "string",
-                        "default": "{app_name}",
-                        "description": "The small text to show when debugging."
-                    },
-                    "vscord-plus.status.image.small.notInFile.key": {
-                        "type": "string",
-                        "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/idle.png",
-                        "description": "The image url to use when you are not in a file."
-                    },
-                    "vscord-plus.status.image.small.notInFile.text": {
-                        "type": "string",
-                        "default": "Snoozin...",
-                        "description": "The small text to show when you are not in a file."
-                    }
-                }
-            },
-            {
-                "title": "Buttons",
-                "properties": {
-                    "vscord-plus.status.buttons.button1.enabled": {
-                        "type": "boolean",
-                        "default": true
-                    },
-                    "vscord-plus.status.buttons.button1.active.enabled": {
-                        "type": "boolean",
-                        "default": false
-                    },
-                    "vscord-plus.status.buttons.button1.active.label": {
-                        "type": "string",
-                        "default": "Active Label Button 1",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button1.active.url": {
-                        "type": "string",
-                        "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button1.inactive.enabled": {
-                        "type": "boolean",
-                        "default": false
-                    },
-                    "vscord-plus.status.buttons.button1.inactive.label": {
-                        "type": "string",
-                        "default": "Inactive Label Button 1",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button1.inactive.url": {
-                        "type": "string",
-                        "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button1.idle.enabled": {
-                        "type": "boolean",
-                        "default": false
-                    },
-                    "vscord-plus.status.buttons.button1.idle.label": {
-                        "type": "string",
-                        "default": "Idle Label Button 1",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button1.idle.url": {
-                        "type": "string",
-                        "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button1.git.active.enabled": {
-                        "type": "boolean",
-                        "default": true
-                    },
-                    "vscord-plus.status.buttons.button1.git.active.label": {
-                        "type": "string",
-                        "default": "View Repository",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button1.git.active.url": {
-                        "type": "string",
-                        "default": "{git_url}",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button1.git.inactive.enabled": {
-                        "type": "boolean",
-                        "default": true
-                    },
-                    "vscord-plus.status.buttons.button1.git.inactive.label": {
-                        "type": "string",
-                        "default": "View Repository",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button1.git.inactive.url": {
-                        "type": "string",
-                        "default": "{git_url}",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button1.git.idle.enabled": {
-                        "type": "boolean",
-                        "default": true,
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button1.git.idle.label": {
-                        "type": "string",
-                        "default": "View Repository",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button1.git.idle.url": {
-                        "type": "string",
-                        "default": "{git_url}",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button2.enabled": {
-                        "type": "boolean",
-                        "default": false
-                    },
-                    "vscord-plus.status.buttons.button2.active.enabled": {
-                        "type": "boolean",
-                        "default": false
-                    },
-                    "vscord-plus.status.buttons.button2.active.label": {
-                        "type": "string",
-                        "default": "Active Label Button 2",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button2.active.url": {
-                        "type": "string",
-                        "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button2.inactive.enabled": {
-                        "type": "boolean",
-                        "default": false
-                    },
-                    "vscord-plus.status.buttons.button2.inactive.label": {
-                        "type": "string",
-                        "default": "Inactive Label Button 2",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button2.inactive.url": {
-                        "type": "string",
-                        "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button2.idle.enabled": {
-                        "type": "boolean",
-                        "default": false
-                    },
-                    "vscord-plus.status.buttons.button2.idle.label": {
-                        "type": "string",
-                        "default": "Idle Label Button 2",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button2.idle.url": {
-                        "type": "string",
-                        "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button2.git.active.enabled": {
-                        "type": "boolean",
-                        "default": false
-                    },
-                    "vscord-plus.status.buttons.button2.git.active.label": {
-                        "type": "string",
-                        "default": "Git Active Label Button 2",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button2.git.active.url": {
-                        "type": "string",
-                        "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button2.git.inactive.enabled": {
-                        "type": "boolean",
-                        "default": false
-                    },
-                    "vscord-plus.status.buttons.button2.git.inactive.label": {
-                        "type": "string",
-                        "default": "Git Inactive Label Button 2",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button2.git.inactive.url": {
-                        "type": "string",
-                        "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button2.git.idle.enabled": {
-                        "type": "boolean",
-                        "default": false
-                    },
-                    "vscord-plus.status.buttons.button2.git.idle.label": {
-                        "type": "string",
-                        "default": "Git Idle Label Button 2",
-                        "minLength": 1
-                    },
-                    "vscord-plus.status.buttons.button2.git.idle.url": {
-                        "type": "string",
-                        "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                        "minLength": 1
-                    }
-                }
-            },
-            {
-                "title": "Misc",
-                "type": "object",
-                "properties": {
-                    "vscord-plus.file.size.round": {
-                        "type": "number",
-                        "default": 2,
-                        "description": "The number of decimal places to round the file size to."
-                    },
-                    "vscord-plus.file.size.spacer": {
-                        "type": "string",
-                        "default": " ",
-                        "description": "Spacer between the number and the unit."
-                    },
-                    "vscord-plus.behaviour.additionalFileMapping": {
-                        "type": "object",
-                        "default": {},
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "Additional regex to check for language, key is regex and value is the language."
-                    },
-                    "vscord-plus.behaviour.suppressNotifications": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "Suppresses all notifications from the extension."
-                    },
-                    "vscord-plus.behaviour.prioritizeLanguagesOverExtensions": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "Prioritize language defined by editor over file extension when determining the language for the file."
-                    },
-                    "vscord-plus.behaviour.statusBarAlignment": {
-                        "type": "string",
-                        "enum": [
-                            "Right",
-                            "Left"
-                        ],
-                        "default": "Left",
-                        "description": "Changing the alignment of the status bar."
-                    },
-                    "vscord-plus.file.size.humanReadable": {
-                        "type": "boolean",
-                        "default": true,
-                        "description": "If true, the file size will be displayed in a human readable format (e.g. 1.2 MB). If false, the file size will be displayed in bytes."
-                    },
-                    "vscord-plus.file.size.standard": {
-                        "type": "string",
-                        "enum": [
-                            "iec",
-                            "jedec"
-                        ],
-                        "default": "iec",
-                        "description": "The unit standard to use when displaying the file size."
-                    }
-                }
-            },
-            {
-                "title": "REST",
-                "type": "object",
-                "properties": {
-                    "vscord-plus.rest.url": {
-                        "type": "string",
-                        "description": "The URL of the compatible REST API. If this is empty, the extension will not send any data to the API."
-                    },
-                    "vscord-plus.rest.key": {
-                        "type": "string",
-                        "description": "The API key to use when sending data to the API."
-                    }
-                }
-            },
-            {
-                "title": "Advanced",
-                "type": "object",
-                "properties": {
-                    "vscord-plus.behaviour.debug": {
-                        "type": "boolean",
-                        "default": false,
-                        "description": "Enable debug mode"
-                    }
-                }
-            }
-        ]
-    },
-    "capabilities": {
-        "virtualWorkspaces": {
-            "supported": false,
-            "description": "Cannot access local Discord RPC when running in virtual workspace"
+            "description": "List of discord user ids that will be able to use the extension.",
+            "order": 7
+          }
         }
-    },
-    "packageManager": "npm@11.2.0"
+      },
+      {
+        "title": "Status",
+        "type": "object",
+        "properties": {
+          "vscord-plus.status.showElapsedTime": {
+            "type": "boolean",
+            "default": true,
+            "description": "Should elapsed time be shown?"
+          },
+          "vscord-plus.status.resetElapsedTimePerFile": {
+            "type": "boolean",
+            "default": false,
+            "description": "Should we reset the elapsed time after switching file?"
+          },
+          "vscord-plus.status.problems.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Should we count the problems?"
+          },
+          "vscord-plus.status.problems.text": {
+            "type": "string",
+            "default": "- {problems_count} problems found",
+            "description": "This text will be shown when there is a problem."
+          },
+          "vscord-plus.status.problems.countedSeverities": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "error",
+                "warning",
+                "info",
+                "hint"
+              ]
+            },
+            "default": [
+              "error",
+              "warning"
+            ],
+            "description": "List of problem level to count for `problems_count`."
+          },
+          "vscord-plus.status.idle.check": {
+            "type": "boolean",
+            "default": true,
+            "description": "Should we check when you are idling?",
+            "order": 1
+          },
+          "vscord-plus.status.idle.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Should we enable the idle status? \nIf disabled, the extension will only show a plain card with VS Code logo when idling.",
+            "order": 2
+          },
+          "vscord-plus.status.idle.disconnectOnIdle": {
+            "type": "boolean",
+            "default": false,
+            "description": "Should going idle disconnect you from Discord gateway? \nIf enabled, VS Code activity card will disappear from Discord at all when idling.",
+            "order": 3
+          },
+          "vscord-plus.status.idle.resetElapsedTime": {
+            "type": "boolean",
+            "default": false,
+            "description": "Should going idle reset the elapsed time on the last active file? Only applies if \"Disconnect on Idle\" is enabled.",
+            "order": 4
+          },
+          "vscord-plus.status.idle.timeout": {
+            "type": "number",
+            "default": 300,
+            "description": "Time in seconds before the user is considered idle.",
+            "order": 5
+          }
+        }
+      },
+      {
+        "title": "Ignore",
+        "type": "object",
+        "properties": {
+          "vscord-plus.ignore.workspaces": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            },
+            "default": [],
+            "description": "A list of workspace (name / path) to ignore."
+          },
+          "vscord-plus.ignore.workspacesText": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "description": "The text / object to show in the status when current workspace is ignored, when using the object, key is workspace name and value is the text."
+          },
+          "vscord-plus.ignore.repositories": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            },
+            "default": [],
+            "description": "A list of repository name to ignore."
+          },
+          "vscord-plus.ignore.organizations": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            },
+            "default": [],
+            "description": "A list of git organizations to ignore."
+          },
+          "vscord-plus.ignore.gitHosts": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            },
+            "default": [],
+            "description": "A list of git host to ignore."
+          }
+        }
+      },
+      {
+        "title": "Details",
+        "type": "object",
+        "properties": {
+          "vscord-plus.status.details.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Should details be shown?"
+          },
+          "vscord-plus.status.details.idle.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Should details be shown when idling?"
+          },
+          "vscord-plus.status.details.text.idle": {
+            "type": "string",
+            "default": "Idling",
+            "description": "The text to show when idling."
+          },
+          "vscord-plus.status.details.text.editing": {
+            "type": "string",
+            "default": "In {workspace} {problems}",
+            "description": "The text to show when editing a file."
+          },
+          "vscord-plus.status.details.text.debugging": {
+            "type": "string",
+            "default": "Debugging {file_name}{file_extension}",
+            "description": "The text to show when debugging."
+          },
+          "vscord-plus.status.details.text.viewing": {
+            "type": "string",
+            "default": "In {workspace} {problems}",
+            "description": "The text to show when viewing a file."
+          },
+          "vscord-plus.status.details.text.notInFile": {
+            "type": "string",
+            "default": "Not in a file!",
+            "description": "The text to show when you are not in a file."
+          },
+          "vscord-plus.status.details.text.noWorkSpaceText": {
+            "type": "string",
+            "default": "no workspace",
+            "description": "The text to show when you are not in a workspace and there is no workspace text."
+          }
+        }
+      },
+      {
+        "title": "State",
+        "type": "object",
+        "properties": {
+          "vscord-plus.status.state.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Should state be shown?"
+          },
+          "vscord-plus.status.state.debugging.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Should state be shown when debugging? If disabled, it will be shown when editing/viewing a file."
+          },
+          "vscord-plus.status.state.idle.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Should state be shown when idling?"
+          },
+          "vscord-plus.status.state.text.idle": {
+            "type": "string",
+            "default": "",
+            "description": "The text to show when idling."
+          },
+          "vscord-plus.status.state.text.editing": {
+            "type": "string",
+            "default": "Working on {file_name}{file_extension}:{current_line}:{current_column}",
+            "description": "The text to show when editing a file."
+          },
+          "vscord-plus.status.state.text.debugging": {
+            "type": "string",
+            "default": "Debugging: {workspace}",
+            "description": "The text to show when debugging."
+          },
+          "vscord-plus.status.state.text.viewing": {
+            "type": "string",
+            "default": "Viewing {file_name}{file_extension}",
+            "description": "The text to show when viewing a file."
+          },
+          "vscord-plus.status.state.text.notInFile": {
+            "type": "string",
+            "default": "",
+            "description": "The text to show when you are not in a file."
+          },
+          "vscord-plus.status.state.text.noWorkspaceFound": {
+            "type": "string",
+            "default": "No workspace.",
+            "description": "The text to show when no workspace is found."
+          }
+        }
+      },
+      {
+        "title": "Image",
+        "type": "object",
+        "properties": {
+          "vscord-plus.status.image.large.idle.key": {
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/idle-{app_id}.png",
+            "description": "The image url to use when idling"
+          },
+          "vscord-plus.status.image.large.idle.text": {
+            "type": "string",
+            "default": "Idling",
+            "description": "The large text to show when idling."
+          },
+          "vscord-plus.status.image.large.viewing.key": {
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/{lang}.png",
+            "description": "The image url to use when viewing a file."
+          },
+          "vscord-plus.status.image.large.viewing.text": {
+            "type": "string",
+            "default": "Viewing a {LANG} file",
+            "description": "The large text to show when viewing a file."
+          },
+          "vscord-plus.status.image.large.editing.key": {
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/{lang}.png",
+            "description": "The image url to use when editing a file."
+          },
+          "vscord-plus.status.image.large.editing.text": {
+            "type": "string",
+            "default": "Editing a {LANG} file",
+            "description": "The large text to show when editing a file."
+          },
+          "vscord-plus.status.image.large.debugging.key": {
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/debugging.png",
+            "description": "The image url to use when debugging."
+          },
+          "vscord-plus.status.image.large.debugging.text": {
+            "type": "string",
+            "default": "Debugging a {LANG} file",
+            "description": "The large text to show when debugging"
+          },
+          "vscord-plus.status.image.large.notInFile.key": {
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/idle-{app_id}.png",
+            "description": "The image url to use when you are not in a file."
+          },
+          "vscord-plus.status.image.large.notInFile.text": {
+            "type": "string",
+            "default": "",
+            "description": "The large text to show when you are not in a file."
+          },
+          "vscord-plus.status.image.small.idle.key": {
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/idle.png",
+            "description": "The image url to use when idling."
+          },
+          "vscord-plus.status.image.small.idle.text": {
+            "type": "string",
+            "default": "zZz",
+            "description": "The small text to show when idling."
+          },
+          "vscord-plus.status.image.small.viewing.key": {
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/{app_id}.png",
+            "description": "The image url to use when viewing a file."
+          },
+          "vscord-plus.status.image.small.viewing.text": {
+            "type": "string",
+            "default": "{app_name}",
+            "description": "The small text to show when viewing a file."
+          },
+          "vscord-plus.status.image.small.editing.key": {
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/{app_id}.png",
+            "description": "The image url to use when editing a file."
+          },
+          "vscord-plus.status.image.small.editing.text": {
+            "type": "string",
+            "default": "{app_name}",
+            "description": "The small text to show when editing a file."
+          },
+          "vscord-plus.status.image.small.debugging.key": {
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/debugging.png",
+            "description": "The image url to use when debugging."
+          },
+          "vscord-plus.status.image.small.debugging.text": {
+            "type": "string",
+            "default": "{app_name}",
+            "description": "The small text to show when debugging."
+          },
+          "vscord-plus.status.image.small.notInFile.key": {
+            "type": "string",
+            "default": "https://raw.githubusercontent.com/LuanRoger/vscord-plus/main/assets/icons/idle.png",
+            "description": "The image url to use when you are not in a file."
+          },
+          "vscord-plus.status.image.small.notInFile.text": {
+            "type": "string",
+            "default": "Snoozin...",
+            "description": "The small text to show when you are not in a file."
+          }
+        }
+      },
+      {
+        "title": "Buttons",
+        "properties": {
+          "vscord-plus.status.buttons.button1.enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "vscord-plus.status.buttons.button1.active.enabled": {
+            "type": "boolean",
+            "default": false
+          },
+          "vscord-plus.status.buttons.button1.active.label": {
+            "type": "string",
+            "default": "Active Label Button 1",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button1.active.url": {
+            "type": "string",
+            "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button1.inactive.enabled": {
+            "type": "boolean",
+            "default": false
+          },
+          "vscord-plus.status.buttons.button1.inactive.label": {
+            "type": "string",
+            "default": "Inactive Label Button 1",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button1.inactive.url": {
+            "type": "string",
+            "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button1.idle.enabled": {
+            "type": "boolean",
+            "default": false
+          },
+          "vscord-plus.status.buttons.button1.idle.label": {
+            "type": "string",
+            "default": "Idle Label Button 1",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button1.idle.url": {
+            "type": "string",
+            "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button1.git.active.enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "vscord-plus.status.buttons.button1.git.active.label": {
+            "type": "string",
+            "default": "View Repository",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button1.git.active.url": {
+            "type": "string",
+            "default": "{git_url}",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button1.git.inactive.enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "vscord-plus.status.buttons.button1.git.inactive.label": {
+            "type": "string",
+            "default": "View Repository",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button1.git.inactive.url": {
+            "type": "string",
+            "default": "{git_url}",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button1.git.idle.enabled": {
+            "type": "boolean",
+            "default": true,
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button1.git.idle.label": {
+            "type": "string",
+            "default": "View Repository",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button1.git.idle.url": {
+            "type": "string",
+            "default": "{git_url}",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button2.enabled": {
+            "type": "boolean",
+            "default": false
+          },
+          "vscord-plus.status.buttons.button2.active.enabled": {
+            "type": "boolean",
+            "default": false
+          },
+          "vscord-plus.status.buttons.button2.active.label": {
+            "type": "string",
+            "default": "Active Label Button 2",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button2.active.url": {
+            "type": "string",
+            "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button2.inactive.enabled": {
+            "type": "boolean",
+            "default": false
+          },
+          "vscord-plus.status.buttons.button2.inactive.label": {
+            "type": "string",
+            "default": "Inactive Label Button 2",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button2.inactive.url": {
+            "type": "string",
+            "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button2.idle.enabled": {
+            "type": "boolean",
+            "default": false
+          },
+          "vscord-plus.status.buttons.button2.idle.label": {
+            "type": "string",
+            "default": "Idle Label Button 2",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button2.idle.url": {
+            "type": "string",
+            "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button2.git.active.enabled": {
+            "type": "boolean",
+            "default": false
+          },
+          "vscord-plus.status.buttons.button2.git.active.label": {
+            "type": "string",
+            "default": "Git Active Label Button 2",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button2.git.active.url": {
+            "type": "string",
+            "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button2.git.inactive.enabled": {
+            "type": "boolean",
+            "default": false
+          },
+          "vscord-plus.status.buttons.button2.git.inactive.label": {
+            "type": "string",
+            "default": "Git Inactive Label Button 2",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button2.git.inactive.url": {
+            "type": "string",
+            "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button2.git.idle.enabled": {
+            "type": "boolean",
+            "default": false
+          },
+          "vscord-plus.status.buttons.button2.git.idle.label": {
+            "type": "string",
+            "default": "Git Idle Label Button 2",
+            "minLength": 1
+          },
+          "vscord-plus.status.buttons.button2.git.idle.url": {
+            "type": "string",
+            "default": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "minLength": 1
+          }
+        }
+      },
+      {
+        "title": "Misc",
+        "type": "object",
+        "properties": {
+          "vscord-plus.file.size.round": {
+            "type": "number",
+            "default": 2,
+            "description": "The number of decimal places to round the file size to."
+          },
+          "vscord-plus.file.size.spacer": {
+            "type": "string",
+            "default": " ",
+            "description": "Spacer between the number and the unit."
+          },
+          "vscord-plus.behaviour.additionalFileMapping": {
+            "type": "object",
+            "default": {},
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Additional regex to check for language, key is regex and value is the language."
+          },
+          "vscord-plus.behaviour.suppressNotifications": {
+            "type": "boolean",
+            "default": false,
+            "description": "Suppresses all notifications from the extension."
+          },
+          "vscord-plus.behaviour.prioritizeLanguagesOverExtensions": {
+            "type": "boolean",
+            "default": false,
+            "description": "Prioritize language defined by editor over file extension when determining the language for the file."
+          },
+          "vscord-plus.behaviour.statusBarAlignment": {
+            "type": "string",
+            "enum": [
+              "Right",
+              "Left"
+            ],
+            "default": "Left",
+            "description": "Changing the alignment of the status bar."
+          },
+          "vscord-plus.file.size.humanReadable": {
+            "type": "boolean",
+            "default": true,
+            "description": "If true, the file size will be displayed in a human readable format (e.g. 1.2 MB). If false, the file size will be displayed in bytes."
+          },
+          "vscord-plus.file.size.standard": {
+            "type": "string",
+            "enum": [
+              "iec",
+              "jedec"
+            ],
+            "default": "iec",
+            "description": "The unit standard to use when displaying the file size."
+          }
+        }
+      },
+      {
+        "title": "REST",
+        "type": "object",
+        "properties": {
+          "vscord-plus.rest.url": {
+            "type": "string",
+            "description": "The URL of the compatible REST API. If this is empty, the extension will not send any data to the API."
+          },
+          "vscord-plus.rest.key": {
+            "type": "string",
+            "description": "The API key to use when sending data to the API."
+          }
+        }
+      },
+      {
+        "title": "Advanced",
+        "type": "object",
+        "properties": {
+          "vscord-plus.behaviour.debug": {
+            "type": "boolean",
+            "default": false,
+            "description": "Enable debug mode"
+          }
+        }
+      }
+    ]
+  },
+  "capabilities": {
+    "virtualWorkspaces": {
+      "supported": false,
+      "description": "Cannot access local Discord RPC when running in virtual workspace"
+    }
+  },
+  "packageManager": "npm@11.2.0"
 }
