@@ -242,7 +242,6 @@ export class RPCController {
     }
 
     async destroy() {
-        await this.disable();
-        await this.client.destroy();
+        await Promise.all([this.disable(), this.client.destroy(), this.restClient.destroy()]);
     }
 }

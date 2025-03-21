@@ -56,4 +56,13 @@ export class RestClient {
 
         return void client.post(REST_ENDPOINTS_KEYS.activity, { json: activity });
     }
+
+    async destroy(): Promise<void> {
+        const client = this.createRestClient();
+        if (!client) {
+            return;
+        }
+
+        return void client.delete(REST_ENDPOINTS_KEYS.activity);
+    }
 }
