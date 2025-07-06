@@ -1,7 +1,7 @@
 {
   "name": "vscord-plus",
   "displayName": "Discord Rich Presence +",
-  "version": "6.1.1",
+  "version": "6.2.0",
   "description": "Highly customizable Discord Rich Presence extension for Visual Studio Code",
   "main": "dist/extension.js",
   "repository": "github:LuanRoger/vscord-plus",
