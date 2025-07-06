@@ -43,7 +43,7 @@ export class RestClient {
     return ky.create({
       prefixUrl: restUrl,
       headers: {
-        Authorization: `Bearer ${restKey}`,
+        Authorization: restKey,
       },
     });
   }
